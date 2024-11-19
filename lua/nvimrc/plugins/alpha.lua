@@ -6,16 +6,16 @@ return {
   opts = function()
     local dashboard = require("alpha.themes.dashboard")
     local logo = [[
-     ███▄    █ ██▒   █▓ ██▓ ███▄ ▄███▓ ██▀███   ▄████▄     
-     ██ ▀█   █▓██░   █▒▓██▒▓██▒▀█▀ ██▒▓██ ▒ ██▒▒██▀ ▀█     
-    ▓██  ▀█ ██▒▓██  █▒░▒██▒▓██    ▓██░▓██ ░▄█ ▒▒▓█    ▄    
-    ▓██▒  ▐▌██▒ ▒██ █░░░██░▒██    ▒██ ▒██▀▀█▄  ▒▓▓▄ ▄██▒   
-    ▒██░   ▓██░  ▒▀█░  ░██░▒██▒   ░██▒░██▓ ▒██▒▒ ▓███▀ ░   
-    ░ ▒░   ▒ ▒   ░ ▐░  ░▓  ░ ▒░   ░  ░░ ▒▓ ░▒▓░░ ░▒ ▒  ░   
-    ░ ░░   ░ ▒░  ░ ░░   ▒ ░░  ░      ░  ░▒ ░ ▒░  ░  ▒      
-       ░   ░ ░     ░░   ▒ ░░      ░     ░░   ░ ░           
-             ░      ░   ░         ░      ░     ░ ░         
-                   ░                           ░           
+     ███▄    █ ██▒   █▓ ██▓ ███▄ ▄███▓ ██▀███   ▄████▄
+     ██ ▀█   █▓██░   █▒▓██▒▓██▒▀█▀ ██▒▓██ ▒ ██▒▒██▀ ▀█
+    ▓██  ▀█ ██▒▓██  █▒░▒██▒▓██    ▓██░▓██ ░▄█ ▒▒▓█    ▄
+    ▓██▒  ▐▌██▒ ▒██ █░░░██░▒██    ▒██ ▒██▀▀█▄  ▒▓▓▄ ▄██▒
+    ▒██░   ▓██░  ▒▀█░  ░██░▒██▒   ░██▒░██▓ ▒██▒▒ ▓███▀ ░
+    ░ ▒░   ▒ ▒   ░ ▐░  ░▓  ░ ▒░   ░  ░░ ▒▓ ░▒▓░░ ░▒ ▒  ░
+    ░ ░░   ░ ▒░  ░ ░░   ▒ ░░  ░      ░  ░▒ ░ ▒░  ░  ▒
+       ░   ░ ░     ░░   ▒ ░░      ░     ░░   ░ ░
+             ░      ░   ░         ░      ░     ░ ░
+                   ░                           ░
 
                         [ @NMD03 ]
             ]]
@@ -23,7 +23,6 @@ return {
     dashboard.section.header.val = vim.split(logo, "\n")
     -- stylua: ignore
     dashboard.section.buttons.val = {
-     
     }
     for _, button in ipairs(dashboard.section.buttons.val) do
       button.opts.hl = "AlphaButtons"
@@ -57,12 +56,12 @@ return {
         local stats = require("lazy").stats()
         local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
         dashboard.section.footer.val = "⚡ Neovim loaded "
-          .. stats.loaded
-          .. "/"
-          .. stats.count
-          .. " plugins in "
-          .. ms
-          .. "ms"
+            .. stats.loaded
+            .. "/"
+            .. stats.count
+            .. " plugins in "
+            .. ms
+            .. "ms"
         pcall(vim.cmd.AlphaRedraw)
       end,
     })

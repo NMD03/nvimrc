@@ -16,5 +16,6 @@ require("lazy").setup({
     change_detection = { notify = false }
 })
 
-vim.cmd("colorscheme habamax")
+vim.cmd("colorscheme kanagawa")
+-- vim.cmd("colorscheme rose-pine-moon")
 
