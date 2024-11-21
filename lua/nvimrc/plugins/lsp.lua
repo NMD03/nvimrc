@@ -30,6 +30,7 @@ return {
         "pylsp",
         "clangd",
         "asm_lsp",
+         -- "tinymist",
       },
       handlers = {
         function(server_name)
@@ -37,6 +38,22 @@ return {
             capabilities = capabilities
           }
         end,
+
+        -- ["tinymist"] = function()
+        --   require("lspconfig")["tinymist"].setup {
+        --     capabilities = capabilities,
+        --     root_dir = function(filename, bufnr)
+        --       return vim.fn.getcwd()
+        --     end,
+        --     settings = {
+        --       tinymist = {
+        --         settings = {
+        --           exportPdf = "onSave",
+        --         }
+        --       }
+        --     }
+        --   }
+        -- end,
 
         ["clangd"] = function()
           require("lspconfig")["clangd"].setup {
@@ -95,9 +112,9 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<tab>p'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<tab>n'] = cmp.mapping.select_next_item(cmp_select),
+        ['<tab><tab>'] = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
       sources = cmp.config.sources({

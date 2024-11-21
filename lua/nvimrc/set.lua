@@ -31,3 +31,8 @@ vim.opt.colorcolumn = "80"
 -- Clipboard support
 vim.opt.clipboard:append('unnamedplus')
 
+-- Undo history
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
