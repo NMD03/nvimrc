@@ -15,3 +15,13 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<C-]>',
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- buffers
+vim.keymap.set("n", "<leader>n", ":bn<cr>")
+vim.keymap.set("n", "<leader>p", ":bp<cr>")
+vim.keymap.set("n", "<leader>x", ":bd<cr>")
+
+-- yank to clipboard
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+
+-- nvim-comment
+vim.keymap.set({"n", "v"}, "<leader>kc", ":CommentToggle<cr>")

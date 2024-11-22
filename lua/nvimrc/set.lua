@@ -29,7 +29,7 @@ vim.opt.updatetime = 100
 vim.opt.colorcolumn = "80"
 
 -- Clipboard support
-vim.opt.clipboard:append('unnamedplus')
+-- vim.opt.clipboard:append('unnamedplus')
 
 -- Undo history
 vim.opt.swapfile = false
