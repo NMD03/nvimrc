@@ -58,6 +58,7 @@ return {
         ["clangd"] = function()
           require("lspconfig")["clangd"].setup {
             capabilities = capabilities,
+            cmd = {"clangd","--fallback-style=GNU"},
             settings = {
               clangd = {
 
