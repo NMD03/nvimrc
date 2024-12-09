@@ -36,3 +36,12 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+
+-- Dont continue comments automatically
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter", "FileType"}, {
+    pattern = "*",
+    callback = function()
+        vim.opt.formatoptions = vim.opt.formatoptions - 'r' - 'o' - 'c'
+    end
+})
+
