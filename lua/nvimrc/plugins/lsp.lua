@@ -30,7 +30,7 @@ return {
         "pylsp",
         "clangd",
         "asm_lsp",
-         -- "tinymist",
+        --"tinymist",
       },
       handlers = {
         function(server_name)
@@ -39,26 +39,27 @@ return {
           }
         end,
 
-        -- ["tinymist"] = function()
-        --   require("lspconfig")["tinymist"].setup {
-        --     capabilities = capabilities,
-        --     root_dir = function(filename, bufnr)
-        --       return vim.fn.getcwd()
-        --     end,
-        --     settings = {
-        --       tinymist = {
-        --         settings = {
-        --           exportPdf = "onSave",
-        --         }
-        --       }
-        --     }
-        --   }
-        -- end,
+        ["tinymist"] = function()
+          require("lspconfig")["tinymist"].setup {
+            capabilities = capabilities,
+            -- root_dir = function(filename, bufnr)
+            --   return vim.fn.getcwd()
+            -- end,
+            settings = {
+              tinymist = {
+                settings = {
+                  exportPdf = "onSave",
+                  outputPath = "$root/$dir/$name",
+                }
+              }
+            }
+          }
+        end,
 
         ["clangd"] = function()
           require("lspconfig")["clangd"].setup {
             capabilities = capabilities,
-            cmd = {"clangd","--fallback-style=GNU"},
+            cmd = { "clangd", "--fallback-style=GNU" },
             settings = {
               clangd = {
 
