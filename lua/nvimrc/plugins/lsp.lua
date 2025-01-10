@@ -30,6 +30,7 @@ return {
         "pylsp",
         "clangd",
         "asm_lsp",
+        "harper_ls",
         --"tinymist",
       },
       handlers = {
@@ -39,20 +40,27 @@ return {
           }
         end,
 
-        ["tinymist"] = function()
-          require("lspconfig")["tinymist"].setup {
+        -- ["tinymist"] = function()
+        --   require("lspconfig")["tinymist"].setup {
+        --     capabilities = capabilities,
+        --     -- root_dir = function(filename, bufnr)
+        --     --   return vim.fn.getcwd()
+        --     -- end,
+        --     settings = {
+        --       tinymist = {
+        --         settings = {
+        --           exportPdf = "onSave",
+        --           outputPath = "$root/$dir/$name",
+        --         }
+        --       }
+        --     }
+        --   }
+        -- end,
+
+        ["harper_ls"] = function()
+          require("lspconfig")["harper_ls"].setup {
             capabilities = capabilities,
-            -- root_dir = function(filename, bufnr)
-            --   return vim.fn.getcwd()
-            -- end,
-            settings = {
-              tinymist = {
-                settings = {
-                  exportPdf = "onSave",
-                  outputPath = "$root/$dir/$name",
-                }
-              }
-            }
+            filetypes = {"markdown", "typst", "latex"},
           }
         end,
 
