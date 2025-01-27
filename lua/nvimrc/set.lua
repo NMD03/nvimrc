@@ -13,7 +13,8 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 
 -- Search highlighting
-vim.opt.hlsearch = false
+vim.api.nvim_command('highlight Search guifg=#0D0C0C guibg=#8BA4B0 gui=none')
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- Colors

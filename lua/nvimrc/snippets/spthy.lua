@@ -40,7 +40,8 @@ return {
   s("lemma", {
     t("lemma "), i(1, "lemma_name"), t({ ":", "    " }),
     c(2, { t({ "exists-trace", "    " }), t() }),
-    t("\""), i(3, "lemma_logic"), t("\""),
+    t("\" "), i(3, "lemma_logic"), t({"","    "}),
+    t("\""),
   }),
 
   s("restrict", {
