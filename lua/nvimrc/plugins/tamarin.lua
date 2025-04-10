@@ -1,3 +1,3 @@
 return {
-  "tamarin-prover/editors",
+--   "tamarin-prover/editors",
 }
