@@ -30,3 +30,30 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 
 -- nvim-comment
 vim.keymap.set({ "n", "v" }, "<leader>kc", ":CommentToggle<cr>")
+
+-- show error messages
+
+local function copy_diag_on_line()
+  local bufnr = 0
+  local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
+  local diags = vim.diagnostic.get(bufnr, { lnum = lnum })
+
+  if #diags == 0 then
+    vim.notify("No diagnostics on this line", vim.log.levels.INFO)
+    return
+  end
+
+  -- pick the most severe (ERROR < WARN < INFO < HINT)
+  table.sort(diags, function(a, b) return (a.severity or 999) < (b.severity or 999) end)
+  local msg = (diags[1].message or ""):gsub("\r", "")
+
+  -- copy to system clipboard (+) and unnamed register (")
+  vim.fn.setreg("+", msg)
+  vim.fn.setreg('"', msg)
+  vim.notify("Copied diagnostic to clipboard", vim.log.levels.INFO)
+end
+
+-- IMPORTANT: do NOT set nowait=true on "gl" or "glc"/"glg" won't work reliably.
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+vim.keymap.set("n", "glc", copy_diag_on_line, { desc = "Copy line diagnostic" })
+vim.keymap.set("n", "glg", "<cmd>SignifyToggle<CR>", { desc = "Toggle Signify" })

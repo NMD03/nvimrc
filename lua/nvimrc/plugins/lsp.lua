@@ -76,25 +76,25 @@ return {
           }
         end,
 
-        ["pylsp"] = function()
-          require("lspconfig")["pylsp"].setup {
-            capabilities = capabilities,
-            settings = {
-              pylsp = {
-                plugins = {
-                  pycodestyle = { enabled = false },
-                  pylint = { enabled = false },
-                  pyflakes = { enabled = false },
-                  ruff = { enabled = true },
-                  autopep8 = { enabled = false },
-                  yapf = { enabled = false },
-                  black = { enabled = true, line_length = 80 },
-                  mccabe = { enabled = false },
-                }
-              }
-            }
-          }
-        end,
+        -- ["pylsp"] = function()
+        --   require("lspconfig")["pylsp"].setup {
+        --     capabilities = capabilities,
+        --     settings = {
+        --       pylsp = {
+        --         plugins = {
+        --           pycodestyle = { enabled = false },
+        --           pylint = { enabled = false },
+        --           pyflakes = { enabled = false },
+        --           ruff = { enabled = true },
+        --           autopep8 = { enabled = false },
+        --           yapf = { enabled = false },
+        --           black = { enabled = true, line_length = 80 },
+        --           mccabe = { enabled = false },
+        --         }
+        --       }
+        --     }
+        --   }
+        -- end,
 
         ["lua_ls"] = function()
           local lspconfig = require("lspconfig")
