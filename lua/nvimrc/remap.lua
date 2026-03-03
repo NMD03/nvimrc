@@ -43,13 +43,21 @@ local function copy_diag_on_line()
     return
   end
 
-  -- pick the most severe (ERROR < WARN < INFO < HINT)
   table.sort(diags, function(a, b) return (a.severity or 999) < (b.severity or 999) end)
-  local msg = (diags[1].message or ""):gsub("\r", "")
+  local sev_level = { [1] = "Error", [2] = "WARN", [3] = "INFO", [4] = "HINT" }
+  local parts = {}
+
+  for _, d in ipairs(diags) do
+    local sev = sev_level[d.severity] or tostring(d.severity)
+    local msg = (d.message or ""):gsub("\r", ""):gsub("\n", " ")
+    table.insert(parts, string.format("%s: %s", sev, msg))
+  end
+
+  local msgs = table.concat(parts, "\n")
 
   -- copy to system clipboard (+) and unnamed register (")
-  vim.fn.setreg("+", msg)
-  vim.fn.setreg('"', msg)
+  vim.fn.setreg("+", msgs)
+  vim.fn.setreg('"', msgs)
   vim.notify("Copied diagnostic to clipboard", vim.log.levels.INFO)
 end
 
