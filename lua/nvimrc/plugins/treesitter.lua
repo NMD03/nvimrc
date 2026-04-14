@@ -42,5 +42,17 @@ return {
         }
 
         vim.treesitter.language.register("templ", "templ")
+
+        -- remap files to different TS parser
+        vim.treesitter.language.register("bash", { "slurm", "sbatch" })
+        vim.treesitter.language.register("html", { "htmldjango" })
+
+        -- Detect additional file extensions and map to filetype
+        vim.filetype.add({
+            extension = {
+                slurm = "slurm",
+                sbatch = "sbatch",
+            },
+        })
     end
 }
